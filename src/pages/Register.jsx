@@ -9,6 +9,7 @@ import { Button }   from '@/components/ui/button'
 import { Input }    from '@/components/ui/input'
 import { Label }    from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { ChevronLeft } from 'lucide-react'
 
 function Register() {
   const dispatch = useDispatch()
@@ -49,6 +50,15 @@ function Register() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      
+      <Link to="/">
+        <Button
+          className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 flex items-center gap-1 px-3 py-2 sm:px-4 sm:py-2 bg-black text-white rounded-md hover:bg-gray-800">
+          <ChevronLeft className="h-4 w-4" />
+          Back
+        </Button>
+      </Link>
+
       <div className="w-full max-w-sm">
         <div className="text-center mb-6">
           <h1 className="text-2xl font-bold text-gray-900">CareerScan</h1>
