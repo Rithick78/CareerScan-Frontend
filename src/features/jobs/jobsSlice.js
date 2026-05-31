@@ -6,7 +6,6 @@ import {
   deleteSavedJobApi,
 } from '../../api/jobApi'
 
-// ── Async Thunks ──────────────────────────────────────────────────────────────
 
 export const fetchMatchedJobs = createAsyncThunk(
   'jobs/fetchMatched',
@@ -57,7 +56,6 @@ export const deleteJobThunk = createAsyncThunk(
   }
 )
 
-// ── Slice ─────────────────────────────────────────────────────────────────────
 const jobsSlice = createSlice({
   name: 'jobs',
   initialState: {
@@ -65,7 +63,7 @@ const jobsSlice = createSlice({
     savedJobs:    [],
     matchSummary: '',
     totalFound:   0,
-    savedJobIds:  [],    // tracks which jobs are saved (for button state)
+    savedJobIds:  [],  
     isLoading:    false,
     isSaving:     false,
     error:        null,

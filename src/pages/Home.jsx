@@ -1,13 +1,44 @@
-import { Link } from 'react-router-dom'
-import { Briefcase, FileText, Star, Zap } from 'lucide-react'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setCredentials } from '../features/auth/authSlice'
+import { guestLogin } from '../api/authApi'
+import { toast } from 'sonner'
+import { Briefcase, FileText, Star, Zap, UserCheck } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import Spinner from '../components/Spinner'
 
 function Home() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [isGuesting, setIsGuesting] = useState(false)
+
+  async function handleGuestLogin() {
+    setIsGuesting(true)
+    try {
+      const data = await guestLogin()
+
+      dispatch(setCredentials({
+        token: data.token,
+        email: data.email,
+        name: data.name,
+      }))
+
+      toast.success('Welcome! You are logged in as Guest.')
+      navigate('/dashboard')
+
+    } catch {
+      toast.error('Guest login failed. Please try again.')
+    } finally {
+      setIsGuesting(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white">
 
       {/* Navbar */}
-      <header className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+      <header className="border-b  border-gray-200 px-6 py-4 flex items-center justify-between">
         <div>
           <h1 className="text-lg font-bold text-gray-900">CareerScan</h1>
           <p className="text-xs text-gray-400">AI Job Matching</p>
@@ -37,18 +68,45 @@ function Home() {
           searches live job listings, and scores each job based on how
           well it matches your profile.
         </p>
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-2 sm:gap-4">
           <Link to="/register">
-            <Button size="lg">Start for free</Button>
+            <Button className="px-2 sm:px-4 text-xs sm:text-sm">
+              Start for free
+            </Button>
           </Link>
+
           <Link to="/login">
-            <Button size="lg" variant="outline">Sign in</Button>
+            <Button
+              variant="outline"
+              className="px-2 sm:px-4 text-xs sm:text-sm"
+            >
+              Sign in
+            </Button>
           </Link>
+
+          <Button
+            onClick={handleGuestLogin}
+            disabled={isGuesting}
+            className="px-2 sm:px-4 text-xs sm:text-sm"
+          >
+            {isGuesting ? (
+              <>
+                <Spinner size="sm" />
+                <span className="hidden sm:inline">Logging in...</span>
+              </>
+            ) : (
+              <>
+                <UserCheck size={14} />
+                <span className="sm:hidden">Guest</span>
+                <span className="hidden sm:inline">Enter as Guest</span>
+              </>
+            )}
+          </Button>
         </div>
       </section>
 
       {/* How it works */}
-      <section className="bg-gray-50 py-10 px-6">
+      <section className="bg-gray-50 py-8 px-6">
         <div className="max-w-3xl mx-auto">
           <h3 className="text-xl font-semibold text-gray-900 text-center mb-10">
             How it works
@@ -61,7 +119,7 @@ function Home() {
               </div>
               <h4 className="text-sm font-semibold text-gray-900 mb-2">Upload Resume</h4>
               <p className="text-xs text-gray-500 leading-relaxed">
-                Upload your PDF resume. Our AI extracts your role, skills, experience and location automatically.
+                Upload your PDF resume. AI extracts your role, skills, experience and location automatically.
               </p>
             </div>
 
@@ -90,7 +148,7 @@ function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-10 px-6 text-center">
+      <section className="py-8 px-6 text-center">
         <h3 className="text-2xl font-bold text-gray-900 mb-3">
           Ready to find your perfect job?
         </h3>
