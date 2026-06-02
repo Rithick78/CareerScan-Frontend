@@ -76,10 +76,11 @@ function Dashboard() {
         <div className="relative flex items-center justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Sparkles size={16} className="text-blue-200" />
+              🔍
               <span className="text-blue-200 text-xs font-medium uppercase tracking-wide">
                 AI Job Matching
               </span>
+              <Sparkles size={16} className="text-blue-200" />
             </div>
             <h2 className="text-2xl font-bold text-white mb-1">
               Hello, {name} 👋

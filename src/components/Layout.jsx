@@ -38,7 +38,7 @@ function Layout({ children }) {
       <div className="hidden md:block px-5 py-6 border-b border-slate-700">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <SearchCheck size={16} className="text-white" />
+             🔍
           </div>
           <div>
             <h1 className="text-sm font-bold text-white">CareerScan</h1>
@@ -88,7 +88,7 @@ function Layout({ children }) {
             <div className="flex items-center justify-between px-5 py-6 border-b border-slate-700">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <SearchCheck size={17} className="text-white" />
+                  🔍
                 </div>
                 <div className='flex flex-col gap-y-0.5 justify-center items-start'>
                   <h1 className="text-sm font-bold text-white">CareerScan</h1>
