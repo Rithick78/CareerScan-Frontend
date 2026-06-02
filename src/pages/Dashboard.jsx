@@ -6,13 +6,13 @@ import { useAuth, useResume } from '../hooks/useAppSelector'
 import { toast } from 'sonner'
 import Spinner from '../components/Spinner'
 import { Button } from '@/components/ui/button'
-import { Badge }  from '@/components/ui/badge'
+import { Badge } from '@/components/ui/badge'
 import { UploadCloud, Briefcase, MapPin, Clock, User, Sparkles, ArrowRight, FileText } from 'lucide-react'
 
 function Dashboard() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { name }  = useAuth()
+  const { name } = useAuth()
 
   // All resume state from Redux — no local state for data
   const { data: parsedResume, isLoading, isUploading, error } = useResume()
@@ -100,16 +100,19 @@ function Dashboard() {
         {parsedResume && (
           <div className="relative mt-5 flex gap-4">
             <div className="bg-white/15 rounded-xl px-4 py-2.5">
-              <p className="text-blue-200 text-xs">Skills Found</p>
-              <p className="text-white font-bold text-lg">{parsedResume.skills?.length || 0}</p>
+              <p className="text-blue-200 text-xs">
+                <span className="sm:hidden">Skills</span>
+                <span className="hidden sm:inline">Skills Found</span>
+              </p>
+              <p className="text-white font-bold text-sm">{parsedResume.skills?.length || 0}</p>
             </div>
             <div className="bg-white/15 rounded-xl px-4 py-2.5">
               <p className="text-blue-200 text-xs">Experience</p>
-              <p className="text-white font-bold text-sm mt-0.5">{parsedResume.experience || '—'}</p>
+              <p className="text-white font-bold text-xs mt-0.5">{parsedResume.experience || '—'}</p>
             </div>
             <div className="bg-white/15 rounded-xl px-4 py-2.5">
               <p className="text-blue-200 text-xs">Location</p>
-              <p className="text-white font-bold text-sm mt-0.5">{parsedResume.city || '—'}</p>
+              <p className="text-white font-bold text-xs mt-0.5">{parsedResume.city || '—'}</p>
             </div>
           </div>
         )}
