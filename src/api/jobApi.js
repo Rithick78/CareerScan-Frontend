@@ -3,7 +3,6 @@ import api from './axios'
 export async function getMatchedJobsApi() {
   const res = await api.get('/api/jobs')
   return res.data
-  // returns: { searchQuery, totalFound, matchSummary, jobs[] }
 }
 
 export async function saveJobApi(job) {

@@ -49,7 +49,7 @@ export const deleteJobThunk = createAsyncThunk(
   async (jobId, thunkAPI) => {
     try {
       await deleteSavedJobApi(jobId)
-      return jobId   // return jobId so we can remove it from state
+      return jobId  
     } catch (err) {
       return thunkAPI.rejectWithValue('Could not delete job.')
     }
