@@ -13,6 +13,11 @@ function Home() {
   const navigate = useNavigate()
   const [isGuesting, setIsGuesting] = useState(false)
 
+  useEffect(() => {
+    fetch('https://your-render-app.onrender.com/api/auth/ping')
+      .catch(() => { })
+  }, [])
+
   async function handleGuestLogin() {
     setIsGuesting(true)
     try {
@@ -104,6 +109,9 @@ function Home() {
           </Button>
         </div>
       </section>
+      <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-200 text-yellow-700 text-xs px-3 py-1.5 rounded-full mb-4">
+        ⚡ Free hosting — first visit may take 30-60 seconds to load
+      </div>
 
       {/* How it works */}
       <section className="bg-gray-50 py-8 px-6">

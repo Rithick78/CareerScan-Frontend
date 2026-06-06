@@ -58,8 +58,9 @@ function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex flex-col items-center justify-center h-64 gap-3">
         <Spinner size="lg" />
+        <p className="text-xs md:text-sm text-gray-400">Starting server... This may take up to 1 minute on first visit.</p>
       </div>
     )
   }

@@ -5,6 +5,10 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
+setTimeout(() => {
+  api.get('/api/auth/ping').catch(() => {})
+}, 1000)
+
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
   if (token) config.headers.Authorization = `Bearer ${token}`
