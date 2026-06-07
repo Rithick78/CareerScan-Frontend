@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { loginUser, registerUser } from '../../api/authApi'
 
-// ── Async Thunks ──────────────────────────────────────────────────────────────
+// Async Thunks
 
 export const loginThunk = createAsyncThunk(
   'auth/login',
@@ -29,8 +29,7 @@ export const registerThunk = createAsyncThunk(
   }
 )
 
-// ── Initial State ─────────────────────────────────────────────────────────────
-
+// Initial State
 const initialState = {
   token:     localStorage.getItem('token') || null,
   email:     localStorage.getItem('email') || null,
@@ -39,14 +38,12 @@ const initialState = {
   error:     null,
 }
 
-// ── Slice ─────────────────────────────────────────────────────────────────────
-
+// Slice
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
 
-    // Used by guest login in Home.jsx
     // Guest login calls API directly and dispatches this manually
     setCredentials: (state, action) => {
       const { token, email, name } = action.payload
@@ -100,7 +97,7 @@ const authSlice = createSlice({
         state.error     = action.payload
       })
 
-      // ── REGISTER ──
+      // REGISTER
       .addCase(registerThunk.pending, (state) => {
         state.isLoading = true
         state.error     = null

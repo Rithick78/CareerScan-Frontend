@@ -18,6 +18,16 @@ function FindJobs() {
   }, [dispatch])
 
   useEffect(() => {
+  if (matchedJobs.length > 0) {
+    console.log('Job source:', matchedJobs[0].jobId)
+    // js-xxx = JSearch
+    // serp-xxx = SerpApi
+    // adzuna-xxx = Adzuna
+    // arb-xxx = Arbeitnow
+  }
+}, [matchedJobs])
+
+  useEffect(() => {
     if (error?.status === 404) {
       toast.error('Please upload your resume first')
       navigate('/dashboard')

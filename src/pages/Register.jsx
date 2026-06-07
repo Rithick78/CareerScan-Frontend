@@ -5,9 +5,9 @@ import { registerThunk } from '../features/auth/authSlice'
 import { useAuth } from '../hooks/useAppSelector'
 import { toast } from 'sonner'
 import Spinner from '../components/Spinner'
-import { Button }   from '@/components/ui/button'
-import { Input }    from '@/components/ui/input'
-import { Label }    from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { ChevronLeft } from 'lucide-react'
 
@@ -16,10 +16,10 @@ function Register() {
   const navigate = useNavigate()
   const { isLoading, error } = useAuth()
 
-  const [name,     setName]     = useState('')
-  const [email,    setEmail]    = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [errors,   setErrors]   = useState({})
+  const [errors, setErrors] = useState({})
 
   useEffect(() => {
     if (error) toast.error(error)
@@ -27,9 +27,9 @@ function Register() {
 
   function validate() {
     const e = {}
-    if (!name.trim())         e.name     = 'Name is required'
-    if (!email.trim())        e.email    = 'Email is required'
-    if (!password)            e.password = 'Password is required'
+    if (!name.trim()) e.name = 'Name is required'
+    if (!email.trim()) e.email = 'Email is required'
+    if (!password) e.password = 'Password is required'
     else if (password.length < 6) e.password = 'Minimum 6 characters'
     return e
   }
@@ -50,7 +50,7 @@ function Register() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      
+
       <Link to="/">
         <Button
           className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 flex items-center gap-1 px-3 py-2 sm:px-4 sm:py-2 bg-black text-white rounded-md hover:bg-gray-800">

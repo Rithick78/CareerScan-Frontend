@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from '../features/auth/authSlice'
@@ -73,6 +73,9 @@ function Home() {
           searches live job listings, and scores each job based on how
           well it matches your profile.
         </p>
+        <div className="inline-flex justify-center items-center gap-2 bg-yellow-50 border border-yellow-200 text-yellow-700 text-xs px-3 py-1.5 rounded-full mb-4">
+        ⚡ Free hosting first visit may take 1 min to load
+      </div>
         <div className="flex items-center justify-center gap-2 sm:gap-4">
           <Link to="/register">
             <Button className="px-2 sm:px-4 text-xs sm:text-sm">
@@ -109,9 +112,7 @@ function Home() {
           </Button>
         </div>
       </section>
-      <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-200 text-yellow-700 text-xs px-3 py-1.5 rounded-full mb-4">
-        ⚡ Free hosting — first visit may take 30-60 seconds to load
-      </div>
+      
 
       {/* How it works */}
       <section className="bg-gray-50 py-8 px-6">
