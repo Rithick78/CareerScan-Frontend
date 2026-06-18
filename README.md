@@ -62,3 +62,29 @@ Step 5 — JobSearchService (GET /api/jobs)
 | **PDF Extraction** | Apache PDFBox | 3.x |
 | **Job Search** | JSearch API (RapidAPI) | — |
 | **Build Tools** | Maven + Vite | — |
+
+
+
+## 📸 Screenshots
+
+| Entry                      | Dashboard                           |
+|----------------------------|-------------------------------------|
+| ![Entry](public/entry.png) | ![Dashboard](public/dashboard.png) |
+
+| Find Jobs | Saved Jobs |
+|---|---|
+| ![Find Jobs](public/findjob.png) | ![Saved Jobs](public/save.png) |
+
+## 📬 Contact
+
+**Rithick Jackson**
+
+- 🌐 [Portfolio](https://rithickjacksonportfolio7.netlify.app/)
+- 💼 [LinkedIn](https://www.linkedin.com/in/rithickjackson/)
+- 📧 [rithickjacksonv@gmail.com](mailto:rithickjacksonv@gmail.com)
+
+---
+
+## License
+
+This project is open source and available under the MIT License.
